@@ -57,6 +57,7 @@ public class AlbunsController extends br.com.treinaweb.springmvc.controllers.Con
     @RequestMapping(value = "alterar/{id}", method = RequestMethod.POST)
     public String alterar(@ModelAttribute("album") @Valid Album album, BindingResult result) {
         if (result.hasErrors()) {
+
             return "albuns.alterar.tiles";
         }
         repositorioAlbum.save(album);
