@@ -23,7 +23,7 @@ public class Album {
     @Min(value = 1990)
     @Max(value = 2030)
     private int anoLancamento;
-
-    @OneToMany(mappedBy = "album", fetch = FetchType.EAGER, cascade = CascadeType.MERGE, orphanRemoval = true)
-    private Set<Musica> musicas;
+//
+//    @OneToMany(mappedBy = "album", fetch = FetchType.EAGER, cascade = CascadeType.MERGE, orphanRemoval = true)
+//    private Set<Musica> musicas;
 }

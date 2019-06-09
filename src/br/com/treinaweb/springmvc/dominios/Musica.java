@@ -18,7 +18,7 @@ public class Musica {
     @Column(nullable = false, length = 10)
     private String nome;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "data_criacao")
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dataCriacao;

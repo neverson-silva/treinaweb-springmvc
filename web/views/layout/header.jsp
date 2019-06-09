@@ -13,8 +13,8 @@
                     Albuns
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Listar</a>
-                    <a class="dropdown-item" href="#">Cadastrar</a>
+                    <a class="dropdown-item" href="/albuns/listar">Listar</a>
+                    <a class="dropdown-item" href="/albuns/adicionar">Cadastrar</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -23,8 +23,8 @@
                     Musicas
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Listar</a>
-                    <a class="dropdown-item" href="#">Cadastrar</a>
+                    <a class="dropdown-item" href="/musicas/listar">Listar</a>
+                    <a class="dropdown-item" href="/musicas/adicionar">Cadastrar</a>
                 </div>
             </li>
         </ul>
