@@ -27,11 +27,10 @@ public class Musica {
     @Column(nullable = false, name = "data_criacao")
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
-    @NotEmpty(message = "A data de criacao é obrigatório")
-    @NotNull(message = "A data de criacao é obrigatório")
     private Date dataCriacao;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "album_id")
     private Album album;
 
 

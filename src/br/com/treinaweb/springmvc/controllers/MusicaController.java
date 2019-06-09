@@ -60,7 +60,7 @@ public class MusicaController extends br.com.treinaweb.springmvc.controllers.Con
         return "musica.alterar.tiles";
     }
 
-    @RequestMapping(value = "alterar/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "alterar", method = RequestMethod.POST)
     public String alterar(@ModelAttribute("musica") @Valid Musica musica, BindingResult result,
                           Model model) {
         if (result.hasErrors()) {
