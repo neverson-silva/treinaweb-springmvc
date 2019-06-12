@@ -7,4 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RepositorioAlbum extends JpaRepository<Album, Long> {
 
+    Album findByNome(String nome);
+
+    Album findAllByNomeLike(String nome);
 }

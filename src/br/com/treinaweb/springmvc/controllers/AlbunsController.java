@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -68,6 +65,11 @@ public class AlbunsController extends br.com.treinaweb.springmvc.controllers.Con
     public String excluir(@PathVariable("id") Long id) {
         repositorioAlbum.delete(id);
         return redirect("/albuns/listar");
+    }
+
+    @RequestMapping(value = "porNome/{nome}", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody Album pesquisarPorNome(@PathVariable("nome") String nomeAlbum) {
+       return repositorioAlbum.findAllByNomeLike(nomeAlbum);
     }
 
 }
