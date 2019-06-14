@@ -67,8 +67,8 @@ public class AlbunsController extends br.com.treinaweb.springmvc.controllers.Con
         return redirect("/albuns/listar");
     }
 
-    @RequestMapping(value = "porNome/{nome}", method = RequestMethod.GET, produces = "application/json")
-    public @ResponseBody Album pesquisarPorNome(@PathVariable("nome") String nomeAlbum) {
+    @RequestMapping(value = "porNome", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody List<Album> pesquisarPorNome(@RequestParam(name = "nome", defaultValue = "") String nomeAlbum) {
        return repositorioAlbum.findAllByNomeLike(nomeAlbum);
     }
 

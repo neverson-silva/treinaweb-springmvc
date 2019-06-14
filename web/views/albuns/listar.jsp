@@ -42,24 +42,27 @@
     $(document).ready(function () {
         $('#btn-pesquisar').click(function(){
             var nomeAlbum = $('#txt-pesquisa').val()
-            var urlAjax = '/albuns/porNome/' + nomeAlbum
+            var urlAjax = '/albuns/porNome?nome=' + nomeAlbum
             console.log(urlAjax)
             $.ajax({
                 method: 'GET',
                 url: urlAjax,
                 success: (data) => {
                     $('#tbl-albuns tbody > tr').remove()
-                    $('#tbl-albuns tbody').append(
-                        "<tr>" +
-                            "<td>" + data.id + "</td>" +
-                            "<td>" + data.nome + "</td>" +
-                            "<td>" + data.anoLancamento + "</td>" +
+                    $.each(data, (index, album) => {
+                        $('#tbl-albuns tbody').append(
+                            "<tr>" +
+                            "<td>" + album.id + "</td>" +
+                            "<td>" + album.nome + "</td>" +
+                            "<td>" + album.anoLancamento + "</td>" +
                             "<td>" +
-                                "<a href='/albuns/alterar/" + data.id + "'>Alterar <a/> |" +
-                                "<a href='/albuns/excluir/" + data.id +  "'>Excluir <a/>" +
+                            "<a href='/albuns/alterar/" + album.id + "'>Alterar <a/> |" +
+                            "<a href='/albuns/excluir/" + album.id +  "'>Excluir <a/>" +
                             "</td>" +
-                        "</tr>"
-                    )
+                            "</tr>"
+                        )
+                    })
+
 
                 },
                 error: () => {

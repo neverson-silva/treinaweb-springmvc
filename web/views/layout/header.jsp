@@ -27,6 +27,16 @@
                     <a class="dropdown-item" href="/musicas/adicionar">Cadastrar</a>
                 </div>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Usuarios
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/usuarios/listar">Listar</a>
+                    <a class="dropdown-item" href="/usuarios/adicionar">Cadastrar</a>
+                </div>
+            </li>
         </ul>
     </div>
 </nav>
