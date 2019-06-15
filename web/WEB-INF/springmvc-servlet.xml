@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:sec="http://www.springframework.org/schema/security"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -7,7 +8,9 @@
 	   http://www.springframework.org/schema/beans/spring-beans.xsd
 	   http://www.springframework.org/schema/mvc
 	   http://www.springframework.org/schema/mvc/spring-mvc.xsd
-	   http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/security
+	   http://www.springframework.org/schema/security/spring-security-4.1.xsd
+       http://www.springframework.org/schema/context
 	   http://www.springframework.org/schema/context/spring-context.xsd
 	   http://www.springframework.org/schema/data/jpa
 	   http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
@@ -49,7 +52,7 @@
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.format_sql">true</prop>
             </props>
         </property>
@@ -70,4 +73,33 @@
             </list>
         </property>
     </bean>
+
+<!--      Spring Security -->
+    <bean id="userDetailsService"
+          class="br.com.treinaweb.springmvc.security.TreinaWebUserDetailsService"
+    >
+    </bean>
+    <sec:http pattern="/resources/**" security="none"></sec:http>
+    <sec:http pattern="/home/login" security="none"></sec:http>
+    <sec:http use-expressions="true"
+              auto-config="true"
+    >
+        <sec:intercept-url pattern="/**" access="isAuthenticated()"/>
+        <sec:form-login login-page="/home/login"
+                        default-target-url="/home/bemvindo"
+                        authentication-failure-url="/home/login"
+                        username-parameter="username"
+                        password-parameter="password"
+        />
+        <sec:logout logout-success-url="/home/login"
+                    invalidate-session="true"
+        />
+        <sec:csrf disabled="true"/>
+    </sec:http>
+    <sec:authentication-manager>
+        <sec:authentication-provider user-service-ref="userDetailsService">
+            <sec:password-encoder hash="bcrypt"></sec:password-encoder>
+        </sec:authentication-provider>
+    </sec:authentication-manager>
+
 </beans>
